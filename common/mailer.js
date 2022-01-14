@@ -23,7 +23,7 @@ const sendMAIL = (from, to, subject, text, html) => {
             html
         }, (err, info) => {
             if (err) {
-                reject("smtp failed to connect to mail server")
+                reject(err)
             }
             resolve("successfully sent")
         })
