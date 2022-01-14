@@ -1,6 +1,6 @@
 
 const Host = {
-  ROOT: "localhost:3000",
+  ROOT: "https://dev-projectrdv-v1.herokuapp.com",
   PREFIX: "/v1/api",
 }
 const ApiEndpoints = {
