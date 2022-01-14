@@ -1,7 +1,7 @@
 
 const nodemailer = require("nodemailer")
 
-const sendMAIL = (from, to, subject, text, html) => {
+const sendMAIL = (fromName , fromEmail , to, subject, html) => {
     return new Promise((resolve, reject) => {
 
         nodemailer.createTransport({
@@ -16,14 +16,13 @@ const sendMAIL = (from, to, subject, text, html) => {
                 rejectUnauthorized: false
             }
         }).sendMail({
-            from,
+            from : `"${fromName}" <${fromEmail}>`,
             to,
             subject,
-            text,
             html
         }, (err, info) => {
             if (err) {
-                reject(err)
+                reject("smtp failed to connect to mail server")
             }
             resolve("successfully sent")
         })

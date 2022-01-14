@@ -72,7 +72,7 @@ const signup = (firstname , lastname ,email  , phone, cin) => {
                  const html = messages.resetPasswordMsg(password)
 
                   // send new pass
-                  mailer.sendMAIL('"karim mansour 👻" <don.karimmansour@gmail.com>', res.email, "new Password", "new Password", html)
+                  mailer.sendMAIL(process.env.SMTP_SENDER_NAME , process.env.SMTP_SENDER_EMAIL, res.email, "new Password", html)
                   .then((succ) => resolve("Sent password"))
                   .catch(error => reject(error))
 
@@ -254,7 +254,7 @@ const forgotPasswordDoctor = (email) => {
                            const html = messages.resetPasswordMsg(password)
 
                            // send new pass
-                           mailer.sendMAIL('"karim mansour 👻" <don.karimmansour@gmail.com>', email, "new Password", "new Password", html)
+                           mailer.sendMAIL(process.env.SMTP_SENDER_NAME , process.env.SMTP_SENDER_EMAIL, email, "new Password", html)
                            .then((succ) => resolve("new Sent password"))
                            .catch(error => reject(error))
             

@@ -74,7 +74,7 @@ const signup = (firstname , lastname ,email , password , phone, cin) => {
                  const html = messages.confimEmailMsg(res._id)
 
                 // send Email Verification
-                 mailer.sendMAIL('"karim mansour 👻" <don.karimmansour@gmail.com>', res.email, "Verify Email", "Verify Email", html)
+                 mailer.sendMAIL(process.env.SMTP_SENDER_NAME , process.env.SMTP_SENDER_EMAIL, res.email, "Verify Email", html)
                  .then((succ) => resolve("Confirm your email"))
                  .catch(error => reject(error))
 
@@ -108,7 +108,7 @@ const login = (email, password) => {
                  const html = messages.confimEmailMsg(user._id)
 
                  // send Email Verification
-                  mailer.sendMAIL('"karim mansour 👻" <don.karimmansour@gmail.com>', user.email, "Verify Email", "Verify Email", html)
+                  mailer.sendMAIL(process.env.SMTP_SENDER_NAME , process.env.SMTP_SENDER_EMAIL , user.email, "Verify Email", html)
                   .then((succ) => resolve("re Confirm your email"))
                   .catch(error => reject(error))
 
@@ -257,7 +257,7 @@ const forgotPasswordPatient = (email) => {
                            const html = messages.resetPasswordMsg(password)
 
                            // send Email Verification
-                           mailer.sendMAIL('"karim mansour 👻" <don.karimmansour@gmail.com>', email, "new Password", "new Password", html)
+                           mailer.sendMAIL(process.env.SMTP_SENDER_NAME , process.env.SMTP_SENDER_EMAIL, email, "new Password", html)
                            .then((succ) => resolve("new Sent password"))
                            .catch(error => reject(error))
             
