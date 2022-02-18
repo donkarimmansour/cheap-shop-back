@@ -20,7 +20,7 @@ const confimEmailMsg = (id) => {
     <h3>Please Verify Your Email by clicking the following link</h3>
     <br><br>
     <a style='text-decoration:none;' 
-     href="https://ectestone.herokuapp.com/login/${id}">
+     href="http://dreams-shop.herokuapp.com/login/${id}">
     Click Here to confirm your email</a>` ;
     return html ;
 }
