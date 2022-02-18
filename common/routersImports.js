@@ -1,9 +1,9 @@
 const {check} = require("express-validator")
 const {handleError} = require("../middlewares/handleErrors")
 const {idValidator} = require("../middlewares/idValidator")
-const {handleValidation} = require("../middlewares/handleValidation")
+const {HandleValidatorError} = require("../middlewares/handleValidatorError")
 const passport = require("passport")
-const {ApiEndpoints} = require("../common/apiEndpoints")
+const {ApiEndpoints ,} = require("../common/apiEndpoints")
 
 module.exports = {
     check ,
@@ -11,5 +11,5 @@ module.exports = {
     idValidator ,
     passport ,
     ApiEndpoints ,
-    handleValidation
+    HandleValidatorError 
 }

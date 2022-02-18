@@ -3,9 +3,19 @@ const mongoose = require("mongoose")
 const fileSchema = mongoose.Schema({
     imageUrl: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
     },
+    imagesUrl: {
+        type: Array,
+        required: true,
+    },
+    type : { 
+        type: String,
+        required: false, 
+        enum : ["array" , "single"] ,
+        default : "single",
+    } ,
     createdAt: {
         type: Date,
         default: Date.now()

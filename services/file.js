@@ -5,7 +5,7 @@ const fileRquest = require("../models/file")
 //create Single Image
 const createSingleImage = (imageUrl) => {
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => { 
 
             fileRquest.create({
                imageUrl
@@ -27,28 +27,35 @@ const createSingleImage = (imageUrl) => {
 }
 
 
+//create Multiple Images
 
-//get Single Image
-const getSingleImage = (id) => {
+const createMultipleImages = (imagesUrl) => {
+
     return new Promise((resolve, reject) => {
 
-        // check id()
-        fileRquest.findOne({}, (errFind, file) => {
-            if (errFind)
-                reject(errFind)
+            fileRquest.create({
+               imagesUrl , type : "array"
+            }, (errCreate, doc) => {
+                if (errCreate) {
+                       
+                    imagesUrl.forEach(img => {
+                        if (fs.existsSync("./public/images/" + img)) {
+                         fs.unlink("./public/images/" + img, () => { })
+                        }
+                    });
 
-            if (!file) {
-                reject("file id not exist")
+                    reject(errCreate)
+                    return
+                }
 
-            } else {
-               resolve(file.imageUrl)
-            }
-            }).where("_id").equals(id)
+                resolve(doc["_id"])
+            })
                 
     })
 }
 
+
 module.exports = {
     createSingleImage ,
-    getSingleImage ,
-}
+    createMultipleImages
+ }

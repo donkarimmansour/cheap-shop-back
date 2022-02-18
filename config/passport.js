@@ -8,7 +8,7 @@ const newRole = (name , role , msg , testMod = false) => {
         secretOrKey: process.env.KEY
     }, (Jwt_payload, done) => {
         
-        if (role.includes(Jwt_payload.role) || testMod) {
+        if (role.includes(Jwt_payload.rule) || testMod) {
             return done(null, true)
         } else {
             return done({"message" : msg }, false) 
@@ -18,10 +18,7 @@ const newRole = (name , role , msg , testMod = false) => {
 }
 
 
-newRole("user" , ["user"] , "user permission denied" , false)
-newRole("superAdmin" , ["superAdmin"] , "superAdmin permission denied" , false)
-newRole("admin" , ["admin"] , "admin permission denied" , false)
-newRole("userOrsuperAdmin" , ["user","superAdmin"] , "user Or superAdmin permission denied" , false)
-newRole("adminOrsuperAdmin" , ["admin","superAdmin"] , "admin Or superAdmin permission denied" , false)
-newRole("userOradminOrsuperAdmin" , ["user" , "admin","superAdmin"] , "admin O rsuperAdmin permission denied" , false)
+newRole("user" , ["user"] , "user permission denied" , true)
+newRole("admin" , ["admin"] , "admin permission denied" , true)
+newRole("userOradmin" , ["user" , "admin"] , "user Or admin permission denied" , true)
 

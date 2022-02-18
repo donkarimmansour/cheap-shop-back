@@ -20,10 +20,9 @@ const confimEmailMsg = (id) => {
     <h3>Please Verify Your Email by clicking the following link</h3>
     <br><br>
     <a style='text-decoration:none;' 
-    href="${Host.ROOT}${Host.PREFIX}/user/confirm-email/${id}">
+     href="http://localhost:3000/login/${id}">
     Click Here to confirm your email</a>` ;
     return html ;
-    
 }
 
 
