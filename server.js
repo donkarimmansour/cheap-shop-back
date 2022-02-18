@@ -17,7 +17,7 @@ if (app.get("env") == "development") {
 }
 
 const corsOptions = {
-   origin : "http://localhost:3000"
+   origin : "https://ectestone.herokuapp.com"
 } 
 
 const  path  = require("path")
