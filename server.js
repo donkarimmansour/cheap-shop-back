@@ -18,10 +18,10 @@ if (app.get("env") == "development") {
 
 const corsOptions = {
    origin : "https://ectestone.herokuapp.com"
-} 
-
-const  path  = require("path")
-const  fs  = require("fs")
+}  
+ 
+//const  path  = require("path") 
+//const  fs  = require("fs")
 
 
 // app.get("/images/*" , (req , res) => {
