@@ -111,7 +111,7 @@ const login = (email, password) => {
                 }else{
                     const TOKEN = JWt.sign({
                         user , rule : user.rule 
-                    }, process.env.KEY, {expiresIn: "1h"})
+                    }, process.env.KEY, {expiresIn: "7d"})
 
                     resolve({TOKEN , USER : user})
                 }

@@ -4,6 +4,7 @@ const morgan = require("morgan")
 const passport = require("passport")
 const DB = require("./database/db")
 const cors = require("cors");
+const { Host } = require("./common/apiEndpoints")
 
 //env file
 require("dotenv").config()
@@ -17,7 +18,7 @@ if (app.get("env") == "development") {
 }
 
 const corsOptions = {
-   origin : "https://ectestone.herokuapp.com"
+   origin : `${Host.FRONTEND}`
 }  
  
 //const  path  = require("path") 

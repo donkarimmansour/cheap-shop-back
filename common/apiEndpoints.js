@@ -1,14 +1,15 @@
-
 const Host = {
-  ROOT: "https://dev-projectrdv-v1.herokuapp.com",
+  ROOT: "http://localhost:3001",
   PREFIX: "/v1/api",
+  FRONTEND: "http://localhost:3000",
 }
+
 const ApiEndpoints = {
   UserEndpoints: {
     route: `${Host.PREFIX}/user`,
     list: `/list`,
     login: `/login`,
-    signup: `/signup`,
+    signup: `/signup`,  
     edit: `/edit/:id`,
     activate: `/activate/:id`,
     address: `/address/:id`,
@@ -53,6 +54,7 @@ const ApiEndpoints = {
     list: `/list`,
     create: `/create`,
     delete: `/delete/:id`,
+    count: `/count`,
   },
   MainEndpoints: {
     route: `${Host.PREFIX}/main`,

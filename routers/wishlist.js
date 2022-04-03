@@ -4,8 +4,13 @@ const router = require("express").Router()
 const {wishlistCreateValidator} = require("../middlewares/validators")
 
 // getall
-router.get(ApiEndpoints.wishlistEndpoints.list //, passport.authenticate("userOradmin", {session: false}) 
+router.get(ApiEndpoints.wishlistEndpoints.list , passport.authenticate("userOradmin", {session: false}) 
 ,  WishlistsControlles.getAllWishlists , handleError)
+
+// count
+router.get(ApiEndpoints.wishlistEndpoints.count , passport.authenticate("userOradmin", {session: false}) 
+,  WishlistsControlles.getWishlistCount , handleError)
+
 
 // create
 router.post(ApiEndpoints.wishlistEndpoints.create   , passport.authenticate("user", {session: false}), wishlistCreateValidator ,  HandleValidatorError , WishlistsControlles.createWishlist , handleError)

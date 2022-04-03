@@ -42,6 +42,30 @@ const getAllWishlists = (sort = '{"updatedAt" : 1}', limit = 0 , skip = 0, filte
 
 
 
+// get Wishlist Count
+const getWishlistCount = (filter) => {
+    return new Promise((resolve, reject) => {
+
+        WishlistsRquest.find({}, (errFind, Wishlist) => {
+
+            if (errFind) {
+                reject(errFind)
+                return
+            }
+
+            if (Wishlist.length <= 0) {
+                reject("there are no Wishlist")
+                return
+            }
+
+            resolve(Wishlist)
+ 
+
+        }).count({ ...JSON.parse(filter) })
+
+    })
+}
+
 
 
 
@@ -57,7 +81,7 @@ const createWishlist = (userId , productId) => {
                 return
             }
 
-             resolve(doc.populate("productId"))
+             resolve(doc.populate({path : "productId" , model : "product" ,  populate:{ path: 'images' ,model: 'file'}}))
         })
 
     })
@@ -104,5 +128,5 @@ const deleteWishlist = (id) => {
 
 
 module.exports = {
-    getAllWishlists, deleteWishlist,  createWishlist,
+    getAllWishlists, deleteWishlist,  createWishlist, getWishlistCount
 }

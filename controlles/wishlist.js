@@ -14,7 +14,16 @@ const getAllWishlists = (req, res) => {
     })
 }
 
+// get Wishlist Count
+const getWishlistCount = (req, res) => { 
+    const { filter} = req.query ;
 
+    WishlistsModel.getWishlistCount(filter).then(result => {
+        res.status(codes.ok).json({err: false, msg : result})
+    }).catch(result => {
+        res.status(codes.badRequest).json({err: true, msg : result})
+    })
+}
 
 
 // create Wishlist
@@ -41,5 +50,5 @@ const deleteWishlist = (req, res) => {
 }
 
 module.exports = {
-   getAllWishlists , deleteWishlist  , createWishlist 
+   getAllWishlists , deleteWishlist  , createWishlist  , getWishlistCount
 }
